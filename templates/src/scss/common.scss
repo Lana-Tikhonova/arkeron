@@ -1280,16 +1280,17 @@ ul {
 
 .map_wrapper {
 	&:hover {
-		map {
+		#map {
 			border-radius: 0;
 		}
 	}
 
 	#map {
 		transition: $transition;
-		border-radius: 100px;
+		border-radius: 1000px;
 		height: 240px;
 		width: 460px;
+		overflow: hidden;
 	}
 
 	.text {
@@ -1317,11 +1318,18 @@ ul {
 	line-height: 16px;
 	padding: 16px;
 	position: absolute;
-	top: -20px;
-	left: 34px;
+	top: -25px;
+	left: 31px;
 	white-space: nowrap;
+	display: none;
 }
 
 .marker_wrapper {
 	position: relative;
+
+	&.show {
+		.marker-title {
+			display: block;
+		}
+	}
 }
