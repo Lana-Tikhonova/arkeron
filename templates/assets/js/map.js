@@ -8,15 +8,15 @@ async function main() {
   const {
     YMap,
     YMapDefaultSchemeLayer,
-    YMapControls,
+    // YMapControls,
     YMapDefaultFeaturesLayer,
     YMapMarker,
   } = ymaps3;
 
-  // Импорт модулей для элементов управления на карте
-  const { YMapZoomControl, YMapGeolocationControl } = await ymaps3.import(
-    '@yandex/ymaps3-controls@0.0.1'
-  );
+  // // Импорт модулей для элементов управления на карте
+  // const { YMapZoomControl, YMapGeolocationControl } = await ymaps3.import(
+  //   '@yandex/ymaps3-controls@0.0.1'
+  // );
 
   // Координаты центра карты
   const CENTER_COORDINATES = [37.617698, 55.755864];
@@ -6775,22 +6775,22 @@ async function main() {
   map.addChild(layer);
   map.addChild(new YMapDefaultFeaturesLayer());
 
-  // Добавление элементов управления на карту
-  map.addChild(
-    new YMapControls({
-      position: 'right',
-    }).addChild(new YMapZoomControl({}))
-  );
-  map.addChild(
-    new YMapControls({
-      position: 'top right',
-    }).addChild(new YMapGeolocationControl({}))
-  );
+  // // Добавление элементов управления на карту
+  // map.addChild(
+  //   new YMapControls({
+  //     position: 'right',
+  //   }).addChild(new YMapZoomControl({}))
+  // );
+  // map.addChild(
+  //   new YMapControls({
+  //     position: 'top right',
+  //   }).addChild(new YMapGeolocationControl({}))
+  // );
 
   // Создание маркера
   const markerElement = document.createElement('img');
   markerElement.className = 'my-marker';
-  markerElement.src = 'imgs/marker.svg';
+  markerElement.src = 'templates/assets/imgs/marker.svg';
   markerElement.title = 'Маркер';
 
   // Создание заголовка маркера

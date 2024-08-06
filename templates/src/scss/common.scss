@@ -11,8 +11,8 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url(/templates/assets/fonts/Montserrat-Regular.woff2) format("woff2");
-	src: url(/templates/assets/fonts/Montserrat-Regular.woff) format("woff");
+	src: url(templates/assets/fonts/Montserrat-Regular.woff2) format("woff2");
+	src: url(templates/assets/fonts/Montserrat-Regular.woff) format("woff");
 }
 
 @font-face {
@@ -20,8 +20,8 @@
 	font-style: normal;
 	font-weight: 500;
 	font-display: swap;
-	src: url(/templates/assets/fonts/Montserrat-Medium.woff2) format("woff2");
-	src: url(/templates/assets/fonts/Montserrat-Medium.woff) format("woff");
+	src: url(templates/assets/fonts/Montserrat-Medium.woff2) format("woff2");
+	src: url(templates/assets/fonts/Montserrat-Medium.woff) format("woff");
 }
 
 @font-face {
@@ -29,8 +29,8 @@
 	font-style: normal;
 	font-weight: 600;
 	font-display: swap;
-	src: url(/templates/assets/fonts/Montserrat-SemiBold.woff2) format("woff2");
-	src: url(/templates/assets/fonts/Montserrat-SemiBold.woff) format("woff");
+	src: url(templates/assets/fonts/Montserrat-SemiBold.woff2) format("woff2");
+	src: url(templates/assets/fonts/Montserrat-SemiBold.woff) format("woff");
 }
 
 @font-face {
@@ -38,8 +38,8 @@
 	font-style: italic;
 	font-weight: 600;
 	font-display: swap;
-	src: url(/templates/assets/fonts/Montserrat-SemiBoldItalic.woff2) format("woff2");
-	src: url(/templates/assets/fonts/Montserrat-SemiBoldItalic.woff) format("woff");
+	src: url(templates/assets/fonts/Montserrat-SemiBoldItalic.woff2) format("woff2");
+	src: url(templates/assets/fonts/Montserrat-SemiBoldItalic.woff) format("woff");
 }
 
 @font-face {
@@ -47,8 +47,8 @@
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
-	src: url(/templates/assets/fonts/Montserrat-Bold.woff2) format("woff2");
-	src: url(/templates/assets/fonts/Montserrat-Bold.woff) format("woff");
+	src: url(templates/assets/fonts/Montserrat-Bold.woff2) format("woff2");
+	src: url(templates/assets/fonts/Montserrat-Bold.woff) format("woff");
 }
 
 
@@ -57,8 +57,8 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url(/templates/assets/fonts/PTSans-Regular.woff2) format("woff2");
-	src: url(/templates/assets/fonts/PTSans-Regular.woff) format("woff");
+	src: url(templates/assets/fonts/PTSans-Regular.woff2) format("woff2");
+	src: url(templates/assets/fonts/PTSans-Regular.woff) format("woff");
 }
 
 $color_black: #1D1E1C;
@@ -1288,9 +1288,12 @@ ul {
 	#map {
 		transition: $transition;
 		border-radius: 100px;
+		height: 240px;
+		width: 460px;
 	}
 
 	.text {
+		display: block;
 		font-weight: 500;
 		margin-top: 22px;
 	}
@@ -1298,11 +1301,27 @@ ul {
 
 .my-marker {
 	cursor: pointer;
-	width: 50px;
+	width: 64px;
+	height: 64px;
 	height: auto;
 	position: relative;
 	transform: translate(-50%, -50%);
 	max-width: initial;
 }
 
-.marker_wrapper {}
+.marker-title {
+	border-radius: 100px;
+	background: #FFF;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 16px;
+	padding: 16px;
+	position: absolute;
+	top: -20px;
+	left: 34px;
+	white-space: nowrap;
+}
+
+.marker_wrapper {
+	position: relative;
+}
