@@ -1440,7 +1440,7 @@ ul {
 	height: 64px;
 	height: auto;
 	position: relative;
-	transform: translate(-50%, -100%);
+	transform: translate(-50%, -50%);
 	max-width: initial;
 }
 
@@ -1920,6 +1920,16 @@ ul {
 	.logo {
 		width: calc(100% - 128px);
 	}
+
+	.my-marker {
+		width: 50px;
+	}
+
+	.marker-title {
+		top: -80px;
+		left: -80px;
+	}
+
 }
 
 @media screen and (max-width:350px) {
