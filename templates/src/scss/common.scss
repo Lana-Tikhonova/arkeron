@@ -67,9 +67,14 @@ $color_grey:#F7F7F7;
 $color_grey_border:#D4D4D4;
 $transition: all 0.3s ease;
 
+html {
+	scroll-behavior: auto;
+}
+
 html,
 body {
 	height: 100%;
+	overscroll-behavior-y: none;
 }
 
 body {
@@ -246,7 +251,7 @@ ul {
 	svg {
 		width: 24px;
 		height: 24px;
-		fill: #1D1E1C;
+		fill: $color_black;
 		transition: $transition;
 	}
 
@@ -443,7 +448,7 @@ ul {
 
 
 	svg {
-		fill: #1D1E1C;
+		fill: $color_black;
 		width: 24px;
 		height: 24px;
 	}
@@ -752,9 +757,9 @@ ul {
 	}
 
 	.top {
-		border-top: 0.5px solid #D4D4D4;
-		border-right: 0.5px solid #D4D4D4;
-		border-left: 0.5px solid #D4D4D4;
+		border-top: 0.5px solid $color_grey_border;
+		border-right: 0.5px solid $color_grey_border;
+		border-left: 0.5px solid $color_grey_border;
 		background: #FFF;
 		padding: 20px 24px;
 	}
@@ -794,13 +799,13 @@ ul {
 
 	.swiper-button-next,
 	.swiper-button-prev {
-		border-left: 0.5px solid #D4D4D4;
+		border-left: 0.5px solid $color_grey_border;
 		margin: 0;
 	}
 
 	.swiper-button-next {
 		right: 0;
-		border-right: 0.5px solid #D4D4D4;
+		border-right: 0.5px solid $color_grey_border;
 	}
 
 	.swiper-slide.swiper-slide-active {
@@ -840,7 +845,7 @@ ul {
 		.swiper-button-next,
 		.swiper-button-prev {
 			top: 0;
-			border-top: 0.5px solid #D4D4D4;
+			border-top: 0.5px solid $color_grey_border;
 		}
 
 		.swiper-button-prev {
@@ -951,7 +956,7 @@ ul {
 			transform: translateX(-50%);
 			width: 100vw;
 			height: 0.5px;
-			background: #D4D4D4;
+			background: $color_grey_border;
 			transition: $transition;
 		}
 
@@ -1010,7 +1015,7 @@ ul {
 			transform: translateX(-50%);
 			width: 100vw;
 			height: 0.5px;
-			background: #D4D4D4;
+			background: $color_grey_border;
 			transition: $transition;
 			pointer-events: none;
 		}
@@ -1189,7 +1194,7 @@ ul {
 }
 
 .team {
-	background: #F7F7F7;
+	background: $color_grey;
 }
 
 .team_slider_wrapper {
@@ -1326,7 +1331,7 @@ ul {
 
 
 .footer {
-	border-top: 0.5px solid #D4D4D4;
+	border-top: 0.5px solid $color_grey_border;
 	padding-top: 56px;
 	padding-bottom: 120px;
 
@@ -1568,7 +1573,7 @@ ul {
 
 	.head_slider {
 		padding-bottom: 73px;
-		border-bottom: 0.5px solid #D4D4D4;
+		border-bottom: 0.5px solid $color_grey_border;
 
 		.swiper-button-next,
 		.swiper-button-prev {
@@ -1578,7 +1583,7 @@ ul {
 
 		.swiper-button-prev {
 			left: 0;
-			border-right: 0.5px solid #D4D4D4;
+			border-right: 0.5px solid $color_grey_border;
 		}
 
 		.title {
@@ -1941,4 +1946,63 @@ ul {
 	.services_list .title {
 		font-size: 25px;
 	}
+}
+
+.project_slider_wrapper {
+	.container {
+		display: flex;
+		align-items: flex-start;
+		gap: 16px;
+	}
+
+	.swiper-slide {
+		height: auto;
+	}
+}
+
+.project_slider {
+	width: 666px;
+	margin: 0;
+	// height: 300px;
+
+	.item {
+		display: flex;
+
+		.text {
+			border-radius: 100px;
+			background: #FFF;
+			padding: 16px;
+			color: #1D1E1C;
+			text-align: center;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 16px;
+			display: none;
+		}
+
+		img {
+			width: 100%;
+		}
+	}
+}
+
+.project_slider_small {
+	// height: 100px;
+	// top: 164px;
+	// position: sticky;
+	width: 80px;
+
+	.item {
+		display: flex;
+
+		img {
+			width: 100%;
+		}
+	}
+
+}
+
+.project_slider_wrapper {
+	display: none;
 }

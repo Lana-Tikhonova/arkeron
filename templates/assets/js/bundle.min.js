@@ -70,7 +70,7 @@ $(document).ready(function () {
       $(activeSlide).marquee('resume');
     }
   }
-  // слайдер
+  // большой слайдер
   const headSlider = new Swiper('.head_slider', {
     slidesPerView: 1,
     spaceBetween: 20,
@@ -97,6 +97,7 @@ $(document).ready(function () {
     },
   });
 
+  // слайдер команды
   const teamSlider = new Swiper('.team_slider', {
     slidesPerView: 'auto',
     spaceBetween: 12,
@@ -152,4 +153,53 @@ $(document).ready(function () {
       $('.header').removeClass('fixed');
     }
   });
+
+  // const projectSliderSmall = new Swiper('.project_slider_small', {
+  //   direction: 'vertical',
+  //   slidesPerView: 'auto',
+  //   // freeMode: true,
+  //   watchSlidesProgress: true,
+  // });
+  // // слайдер проектов
+  // const projectSlider = new Swiper('.project_slider', {
+  //   direction: 'vertical',
+  //   slidesPerView: 'auto',
+  //   spaceBetween: 0,
+  //   speed: 600,
+  //   watchOverflow: true,
+  //   watchSlidesVisibility: true,
+  //   watchSlidesProgress: true,
+  //   grabCursor: true,
+  //   thumbs: {
+  //     swiper: projectSliderSmall,
+  //   },
+  //   // pagination: {
+  //   //   el: '.swiper-pagination',
+  //   // },
+  // });
+  // let bigSlider = $('.project_slider');
+  // let smallSlider = $('.project_slider_small');
+  // let bigSliderHeight = bigSlider.height();
+
+  // lax.init();
+  // lax.addDriver(
+  //   'scrollY',
+  //   function () {
+  //     return window.scrollY;
+  //   },
+  //   {
+  //     frameStep: 1,
+  //     inertiaEnabled: true,
+  //   }
+  // );
+
+  // lax.addElements('.project_slider_small', {
+  //   scrollY: {
+  //     translateY: [
+  //       ['elInY', 'elCenterY', 'elOutY'],
+  //       // [0, 'screenWidth/2', 'screenWidth'],
+  //       [0, 0, bigSliderHeight],
+  //     ],
+  //   },
+  // });
 });
