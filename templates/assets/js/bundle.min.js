@@ -131,13 +131,13 @@ $(document).ready(function () {
     duplicated: true,
     pauseOnHover: true,
     startVisible: true,
-    gap: 44,
+    gap: 0,
   });
 
   //  показывать хедер при скролле
   $(window).scroll(function (e) {
     e.preventDefault();
-    if ($(this).scrollTop() > 100) {
+    if ($(this).scrollTop() > 200) {
       $('.header').addClass('after_fixed');
       $('.overlay').hide();
     } else {
@@ -146,7 +146,7 @@ $(document).ready(function () {
         $('.overlay').show();
       }
     }
-    if ($(this).scrollTop() > 200) {
+    if ($(this).scrollTop() > 300) {
       $('.header').addClass('fixed');
     } else {
       $('.header').removeClass('fixed');
