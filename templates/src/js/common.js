@@ -127,7 +127,7 @@ $(document).ready(function () {
 
   //  бегущая строка с в большом в cta
   $('.text_line').marquee({
-    duration: 30000,
+    duration: 15000,
     duplicated: true,
     pauseOnHover: true,
     startVisible: true,

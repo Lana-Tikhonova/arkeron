@@ -13,13 +13,12 @@ async function main() {
     YMapMarker,
   } = ymaps3;
 
-  // // Импорт модулей для элементов управления на карте
-  // const { YMapZoomControl, YMapGeolocationControl } = await ymaps3.import(
-  //   '@yandex/ymaps3-controls@0.0.1'
-  // );
-
   // Координаты центра карты
   const CENTER_COORDINATES = [37.617698, 55.755864];
+  // Координаты маркера
+  const MARKER_COORDINATES = [37.617698, 55.755864];
+  // для ссылка, которая видна при клике на метку
+  const coorginates_links = MARKER_COORDINATES.join(',');
 
   // Объект с параметрами центра и зумом карты
   const LOCATION = {
@@ -6775,26 +6774,19 @@ async function main() {
   map.addChild(layer);
   map.addChild(new YMapDefaultFeaturesLayer());
 
-  // // Добавление элементов управления на карту
-  // map.addChild(
-  //   new YMapControls({
-  //     position: 'right',
-  //   }).addChild(new YMapZoomControl({}))
-  // );
-  // map.addChild(
-  //   new YMapControls({
-  //     position: 'top right',
-  //   }).addChild(new YMapGeolocationControl({}))
-  // );
-
   // Создание маркера
   const markerElement = document.createElement('img');
   markerElement.className = 'my-marker';
   markerElement.src = 'templates/assets/imgs/marker.svg';
   markerElement.title = 'Маркер';
 
-  // Создание заголовка маркера
-  const markerTitle = document.createElement('div');
+  // Создание ссылки маркера
+  const markerTitle = document.createElement('a');
+  markerTitle.setAttribute('target', '_blank');
+  markerTitle.setAttribute(
+    'href',
+    `https://yandex.ru/maps/?pt=${coorginates_links}&z=18&l=map`
+  );
   markerTitle.className = 'marker-title';
   markerTitle.innerHTML = '';
 
@@ -6828,7 +6820,7 @@ async function main() {
   map.addChild(
     new YMapMarker(
       {
-        coordinates: CENTER_COORDINATES,
+        coordinates: MARKER_COORDINATES,
       },
       imgContainer
     )

@@ -1396,7 +1396,7 @@ ul {
 
 .map_wrapper {
 	height: 0;
-	padding-bottom: 52%;
+	padding-bottom: clamp(180px, 52%, 240px);
 	overflow: hidden;
 	border-radius: 1000px;
 	width: 100%;
@@ -1440,7 +1440,7 @@ ul {
 	height: 64px;
 	height: auto;
 	position: relative;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -100%);
 	max-width: initial;
 }
 
@@ -1764,6 +1764,11 @@ ul {
 		.bottom {
 			height: 480px;
 		}
+	}
+
+	.menu_wrapper .info {
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.header_link {
