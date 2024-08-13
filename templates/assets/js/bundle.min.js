@@ -154,52 +154,88 @@ $(document).ready(function () {
     }
   });
 
-  // const projectSliderSmall = new Swiper('.project_slider_small', {
-  //   direction: 'vertical',
-  //   slidesPerView: 'auto',
-  //   // freeMode: true,
-  //   watchSlidesProgress: true,
-  // });
-  // // слайдер проектов
-  // const projectSlider = new Swiper('.project_slider', {
-  //   direction: 'vertical',
-  //   slidesPerView: 'auto',
-  //   spaceBetween: 0,
-  //   speed: 600,
-  //   watchOverflow: true,
-  //   watchSlidesVisibility: true,
-  //   watchSlidesProgress: true,
-  //   grabCursor: true,
-  //   thumbs: {
-  //     swiper: projectSliderSmall,
-  //   },
-  //   // pagination: {
-  //   //   el: '.swiper-pagination',
-  //   // },
-  // });
-  // let bigSlider = $('.project_slider');
-  // let smallSlider = $('.project_slider_small');
-  // let bigSliderHeight = bigSlider.height();
+  // скролл в слайдере
+  const slider = $('.project_slider');
+  let sliderSmall = $('.project_slider_small_block');
+  let sliderBorder = $('.project_slider_small_border');
+  let project_slider_small = $('.project_slider_small');
+  let sliderHeight = slider.outerHeight();
+  let sliderSmallHeight = sliderSmall.outerHeight();
+  const maxBorderTranslate =
+    project_slider_small.outerHeight() - sliderBorder.outerHeight();
 
-  // lax.init();
-  // lax.addDriver(
-  //   'scrollY',
-  //   function () {
-  //     return window.scrollY;
-  //   },
-  //   {
-  //     frameStep: 1,
-  //     inertiaEnabled: true,
-  //   }
-  // );
+  function isVisible() {
+    let sliderTopPosition = slider[0].getBoundingClientRect().top;
 
-  // lax.addElements('.project_slider_small', {
-  //   scrollY: {
-  //     translateY: [
-  //       ['elInY', 'elCenterY', 'elOutY'],
-  //       // [0, 'screenWidth/2', 'screenWidth'],
-  //       [0, 0, bigSliderHeight],
-  //     ],
-  //   },
+    const topBorderPreccent =
+      (sliderSmallHeight / 100) *
+      (Math.abs(sliderTopPosition) / (sliderHeight / 100));
+
+    if (sliderTopPosition < 0) {
+      if (project_slider_small[0].getBoundingClientRect().top > 0) {
+        sliderSmall.css({
+          top: `${topBorderPreccent}px`,
+        });
+
+        sliderBorder.css({
+          top:
+            topBorderPreccent <= maxBorderTranslate
+              ? topBorderPreccent
+              : maxBorderTranslate,
+        });
+      }
+    }
+  }
+  isVisible();
+
+  // const lenis = new Lenis();
+  // lenis.on('scroll', (e) => {
+  //   isVisible();
   // });
+  // function raf(time) {
+  //   lenis.raf(time);
+  //   requestAnimationFrame(raf);
+  // }
+
+  // requestAnimationFrame(raf);
+
+  $(window).on('scroll', function () {
+    isVisible();
+  });
+
+  // прокручивать к нужному слайду при клике на маленькие слайды
+  $(document).on('click', '.project_slider_small .item', function (e) {
+    e.preventDefault();
+    let href = $(this).attr('href');
+    $('html, body').animate(
+      {
+        scrollTop: $(href).offset().top,
+      },
+      1500,
+      'linear'
+    );
+    return false;
+  });
+
+  // прокрутка к низу слайдера
+  $(document).on('click', '.project_slider_small_btn', function (e) {
+    $('html, body').animate(
+      {
+        scrollTop:
+          slider.offset().top + slider.outerHeight() - $(window).height(),
+      },
+      500,
+      'linear'
+    );
+    return false;
+  });
+
+  // затемнять маленькие слайды, при ховере на один из них
+  $('.project_slider_small .item').on('mouseenter', function (e) {
+    $('.project_slider_small .item').not(this).css('opacity', '0.4');
+  });
+
+  $('.project_slider_small .item').on('mouseleave', function (e) {
+    $('.project_slider_small .item').not(this).css('opacity', '1');
+  });
 });
