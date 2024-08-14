@@ -46,7 +46,7 @@ $(document).ready(function () {
     $(this).find('.text').addClass('hide').removeClass('show');
   });
 
-  //  бегущая строка с в большом слайдера
+  //  бегущая строка информации в большом слайдерe
   let sliderMarqueeOptions = {
     duration: 30000,
     duplicated: true,
@@ -55,21 +55,60 @@ $(document).ready(function () {
     gap: 12,
   };
 
-  let sliderMarquee = $('.info_line').marquee(sliderMarqueeOptions);
+  let sliderMarquee = $('.head_slider .info_line').marquee(
+    sliderMarqueeOptions
+  );
   sliderMarquee.marquee('pause');
 
   function sliderMarqueeFunc(slider) {
-    let activeSlide =
-      slider.slides[slider.activeIndex].querySelector('.info_line');
+    let activeSlide = slider.slides[slider.activeIndex];
+    let lineSlider = activeSlide.querySelector('.head_slider .info_line');
 
     // останавливать бегущую строку если не активный слайд
     Object.values(sliderMarquee).forEach((item) => $(item).marquee('pause'));
 
     // Запускать бегущую строку при перелистывании слайдера
-    if (activeSlide) {
-      $(activeSlide).marquee('resume');
+    if (lineSlider) {
+      $(lineSlider).marquee('resume');
     }
   }
+
+  if ($(window).width() > 993) {
+    //  бегущая строка заголовка в большом слайдерe
+    let titleMarqueeOptions = {
+      duration: 20000,
+      duplicated: false,
+      pauseOnHover: true,
+      startVisible: true,
+      gap: 0,
+    };
+
+    let titleMarquee = $('.head_slider_wrapper .title').marquee(
+      titleMarqueeOptions
+    );
+    titleMarquee.marquee('pause');
+
+    function sliderTitleMarqueeFunc(slider) {
+      let activeSlide = slider.slides[slider.activeIndex];
+      let titleSlider = activeSlide.querySelector(
+        '.head_slider_wrapper .title'
+      );
+
+      // останавливать бегущую строку если не активный слайд
+      Object.values(titleMarquee).forEach((item) => $(item).marquee('pause'));
+
+      // если заголовок не входит по ширине, то запускать бегущюю строку
+      if (
+        $(window).width() > 993 &&
+        titleSlider &&
+        $(titleSlider).find('.js-marquee').width() >=
+          $(titleSlider).parent().width()
+      ) {
+        $(titleSlider).marquee('resume');
+      }
+    }
+  }
+
   // большой слайдер
   const headSlider = new Swiper('.head_slider', {
     slidesPerView: 1,
@@ -90,9 +129,15 @@ $(document).ready(function () {
     on: {
       init: function (slider) {
         sliderMarqueeFunc(slider);
+        if ($(window).width() > 993) {
+          sliderTitleMarqueeFunc(slider);
+        }
       },
       slideChangeTransitionEnd: function (slider) {
         sliderMarqueeFunc(slider);
+        if ($(window).width() > 993) {
+          sliderTitleMarqueeFunc(slider);
+        }
       },
     },
   });
@@ -126,6 +171,34 @@ $(document).ready(function () {
     },
   });
 
+  // слайдер проектов на мобилке
+  const projectSlider = new Swiper('.project_item_slider', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    speed: 600,
+    // effect: 'fade',
+    loop: true,
+    watchOverflow: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    on: {
+      slideChange: function () {
+        let currentSlide = this.activeIndex + 1;
+        document.querySelector('.swiper-counter').innerHTML = `
+        <span class="current">
+        ${currentSlide < 10 ? +currentSlide : currentSlide}
+        </span> 
+        / 
+        <span class="total">
+          ${this.slides.length}
+        </span>`;
+      },
+    },
+  });
+
   //  бегущая строка с в большом в cta
   $('.text_line').marquee({
     duration: 15000,
@@ -155,14 +228,14 @@ $(document).ready(function () {
   });
 
   // скролл в слайдере
-  const slider = $('.project_slider');
-  let sliderSmall = $('.project_slider_small_block');
-  let sliderBorder = $('.project_slider_small_border');
-  let project_slider_small = $('.project_slider_small');
+  const slider = $('.project_images');
+  let sliderSmall = $('.project_images_small_block');
+  let sliderBorder = $('.project_images_small_border');
+  let project_images_small = $('.project_images_small');
   let sliderHeight = slider.outerHeight();
   let sliderSmallHeight = sliderSmall.outerHeight();
   const maxBorderTranslate =
-    project_slider_small.outerHeight() - sliderBorder.outerHeight();
+    project_images_small.outerHeight() - sliderBorder.outerHeight();
 
   function isVisible() {
     let sliderTopPosition = slider[0].getBoundingClientRect().top;
@@ -172,7 +245,7 @@ $(document).ready(function () {
       (Math.abs(sliderTopPosition) / (sliderHeight / 100));
 
     if (sliderTopPosition < 0) {
-      if (project_slider_small[0].getBoundingClientRect().top > 0) {
+      if (project_images_small[0].getBoundingClientRect().top > 0) {
         sliderSmall.css({
           top: `${topBorderPreccent}px`,
         });
@@ -204,7 +277,7 @@ $(document).ready(function () {
   });
 
   // прокручивать к нужному слайду при клике на маленькие слайды
-  $(document).on('click', '.project_slider_small .item', function (e) {
+  $(document).on('click', '.project_images_small .item', function (e) {
     e.preventDefault();
     let href = $(this).attr('href');
     $('html, body').animate(
@@ -218,7 +291,7 @@ $(document).ready(function () {
   });
 
   // прокрутка к низу слайдера
-  $(document).on('click', '.project_slider_small_btn', function (e) {
+  $(document).on('click', '.project_images_small_btn', function (e) {
     $('html, body').animate(
       {
         scrollTop:
@@ -231,11 +304,28 @@ $(document).ready(function () {
   });
 
   // затемнять маленькие слайды, при ховере на один из них
-  $('.project_slider_small .item').on('mouseenter', function (e) {
-    $('.project_slider_small .item').not(this).css('opacity', '0.4');
+  $('.project_images_small .item').on('mouseenter', function (e) {
+    $('.project_images_small .item').not(this).css('opacity', '0.4');
   });
 
-  $('.project_slider_small .item').on('mouseleave', function (e) {
-    $('.project_slider_small .item').not(this).css('opacity', '1');
+  $('.project_images_small .item').on('mouseleave', function (e) {
+    $('.project_images_small .item').not(this).css('opacity', '1');
+  });
+
+  $(document).on('click', '.modal_callback_btn', function (e) {
+    e.preventDefault();
+    $('.modal_callback').addClass('show');
+  });
+  $(document).on('click', '.modal_callback .close', function (e) {
+    e.preventDefault();
+    $('.modal_callback').removeClass('show');
+  });
+
+  // Маска для инпутов с номером телефона
+  const phoneInputs = document.querySelectorAll('.form-control[type="tel"]');
+  phoneInputs.forEach((input) => {
+    IMask(input, {
+      mask: '+{7} (000) 000-00-00',
+    });
   });
 });
