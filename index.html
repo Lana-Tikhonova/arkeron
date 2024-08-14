@@ -22,12 +22,12 @@
         crossorigin="anonymous">
     <link rel="preload" href="templates/assets/fonts/PTSans-Regular.woff2" as="font" type="font/woff2"
         crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css"> -->
-    <link rel="stylesheet" href="templates/assets/css/bundle.min.css?v=1">
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+    <link rel="stylesheet" href="templates/assets/css/bundle.min.css?v=2">
 
     <script src="https://api-maps.yandex.ru/3.0/?apikey=4c7e2233-a854-4da5-9483-7a55bd41dfc3&lang=ru_RU"
         type="text/javascript"></script>
-    <!-- <script src="templates/assets/js/map.js?v=1" type="text/javascript"></script> -->
+    <script src="templates/assets/js/map.js?v=1" type="text/javascript"></script>
 </head>
 
 <body>
@@ -91,7 +91,7 @@
         </div>
     </header>
     <main>
-        <section class="section head">
+        <section class="head">
             <div class="container">
                 <div class="title_wrapper">
                     <h1>Созданиём пространства для жизни и бизнеса</h1>
@@ -182,7 +182,7 @@
                 </div>
             </div>
         </section>
-        <section class="section about" id="about">
+        <section class="about" id="about">
             <div class="container">
                 <div class="title_wrapper">
                     <h3>О компании</h3>
@@ -205,7 +205,7 @@
                 </ul>
             </div>
         </section>
-        <section class="section services" id="services">
+        <section class="section services section1" id="services">
             <div class="container">
                 <div class="title_wrapper">
                     <h2>Наши услуги</h2>
@@ -273,7 +273,7 @@
                 </ul>
             </div>
         </section>
-        <section class="section project" id="project">
+        <section class="section project section2" id="project">
             <div class="container">
                 <div class="title_wrapper">
                     <h2>Реализованные
@@ -385,7 +385,7 @@
                 </div>
             </div>
         </section>
-        <section class="section team" id="team">
+        <section class="section team section3" id="team">
             <div class="container">
                 <div class="title_wrapper">
                     <h2>Наша команда</h2>
@@ -468,7 +468,7 @@
                 </div>
             </div>
         </section>
-        <div class='bottom_section'>
+        <div class='section bottom_section'>
             <section class="section cta" id="cta">
                 <div class="container">
                     <div class="title_wrapper">
@@ -514,85 +514,6 @@
                         </div>
                     </div>
                 </a>
-                <div class='modal_callback'>
-                    <div class='close'>
-                        <svg>
-                            <use xlink:href="templates/assets/imgs/sprite.symbol.svg#close">
-                            </use>
-                        </svg>
-                    </div>
-                    <div class="logo"><img src="templates/assets/imgs/logo.svg" alt=""></div>
-                    <div class='body'>
-                        <div class="title">Связаться с нами</div>
-                        <form action="#">
-                            <div class="form-row">
-                                <div class='form-col form-col_33'>
-                                    <div class="form-group">
-                                        <label>
-                                            <span class="form_caption">Имя</span>
-                                            <input name="name" value="" class="form-control" required=""
-                                                placeholder="Имя" type="text">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class='form-col form-col_33'>
-                                    <div class="form-group">
-                                        <label>
-                                            <span class="form_caption">Телефон</span>
-                                            <input name="tel" value="" class="form-control" required=""
-                                                placeholder="+7 (000) 000-00-00" type="tel">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class='form-col form-col_33'>
-                                    <div class="form-group">
-                                        <label>
-                                            <span class="form_caption">Email</span>
-                                            <input name="email" value="" class="form-control" required=""
-                                                placeholder="name@domain.ru" type="email">
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class='form-col'>
-                                    <div class="form-group">
-                                        <span class="form_caption">Какой вопрос интересует</span>
-                                        <div class='radio_list'>
-                                            <div class='radio_item'>
-                                                <input type="radio" id="project" name="question" value="project">
-                                                <span>Начать проект</span>
-                                            </div>
-                                            <div class='radio_item'>
-                                                <input type="radio" id="services" name="question" value="services">
-                                                <span>Услуги компании</span>
-                                            </div>
-                                            <div class='radio_item'>
-                                                <input type="radio" id="cooperation" name="question"
-                                                    value="cooperation">
-                                                <span>Сотрудничество</span>
-                                            </div>
-                                            <div class='radio_item'>
-                                                <input type="radio" id="other" name="question" value="other">
-                                                <span>Другое</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class='form-col'>
-                                    <div class="form-group">
-                                        <label>
-                                            <span class="form_caption">Комментарий</span>
-                                            <textarea name="text" class="form-control" required=""></textarea>
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class='form-col d-flex'>
-                                    <input type="submit" class="btn" value="Отправить">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
             </section>
             <footer class='footer'>
                 <div class="container">
@@ -640,14 +561,97 @@
                 </div>
             </footer>
         </div>
+        <div class='modal_callback'>
+            <div class='close modal_close'>
+                <svg>
+                    <use xlink:href="templates/assets/imgs/sprite.symbol.svg#close">
+                    </use>
+                </svg>
+            </div>
+            <div class="logo"><img src="templates/assets/imgs/logo.svg" alt=""></div>
+            <div class='body'>
+                <form action="#">
+                    <div class="title">Связаться с нами</div>
+                    <div class="form-row">
+                        <div class='form-col form-col_33'>
+                            <div class="form-group">
+                                <label>
+                                    <span class="form_caption">Имя</span>
+                                    <input name="name" value="" class="form-control" required="" placeholder="Имя"
+                                        type="text">
+                                </label>
+                            </div>
+                        </div>
+                        <div class='form-col form-col_33'>
+                            <div class="form-group">
+                                <label>
+                                    <span class="form_caption">Телефон</span>
+                                    <input name="tel" value="" class="form-control" required=""
+                                        placeholder="+7 (000) 000-00-00" type="tel">
+                                </label>
+                            </div>
+                        </div>
+                        <div class='form-col form-col_33'>
+                            <div class="form-group">
+                                <label>
+                                    <span class="form_caption">Email</span>
+                                    <input name="email" value="" class="form-control" required=""
+                                        placeholder="name@domain.ru" type="email">
+                                </label>
+                            </div>
+                        </div>
+                        <div class='form-col'>
+                            <div class="form-group">
+                                <span class="form_caption">Какой вопрос интересует</span>
+                                <div class='radio_list'>
+                                    <div class='radio_item'>
+                                        <input type="radio" id="project" name="question" value="project">
+                                        <span>Начать проект</span>
+                                    </div>
+                                    <div class='radio_item'>
+                                        <input type="radio" id="services" name="question" value="services">
+                                        <span>Услуги компании</span>
+                                    </div>
+                                    <div class='radio_item'>
+                                        <input type="radio" id="cooperation" name="question" value="cooperation">
+                                        <span>Сотрудничество</span>
+                                    </div>
+                                    <div class='radio_item'>
+                                        <input type="radio" id="other" name="question" value="other">
+                                        <span>Другое</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='form-col'>
+                            <div class="form-group">
+                                <label>
+                                    <span class="form_caption">Комментарий</span>
+                                    <textarea name="text" class="form-control" required=""></textarea>
+                                </label>
+                            </div>
+                        </div>
+                        <div class='form-col d-flex'>
+                            <input type="submit" class="btn" value="Отправить">
+                        </div>
+                    </div>
+                </form>
+                <!-- показывать после отправки формы, добавляя класс show-->
+                <div class='after_form'>
+                    <div class="title">Отлично! Скоро свяжемся с вами 😉</div>
+                    <div class='btn btn_grey modal_close'>Вернуться на главную страницу</div>
+                </div>
+            </div>
+        </div>
     </main>
-    <!-- <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> -->
     <script src="templates/src/vendors/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="templates/src/vendors/imask/imask.js"></script>
-    <!-- <script src="templates/src/vendors/lax/lax.js"></script> -->
     <script src="templates/src/vendors/marquee/jquery.marquee.min.js"></script>
     <script src="templates/src/vendors/swiper/swiper-bundle.min.js"></script>
-    <script src="templates/assets/js/bundle.min.js?v=1"></script>
+    <script src="templates/assets/js/bundle.min.js?v=2"></script>
 </body>
 
 </html>

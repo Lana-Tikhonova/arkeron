@@ -260,21 +260,20 @@ $(document).ready(function () {
     }
   }
   isVisible();
-
-  // const lenis = new Lenis();
-  // lenis.on('scroll', (e) => {
-  //   isVisible();
-  // });
-  // function raf(time) {
-  //   lenis.raf(time);
-  //   requestAnimationFrame(raf);
-  // }
-
-  // requestAnimationFrame(raf);
-
   $(window).on('scroll', function () {
     isVisible();
   });
+
+  const lenis = new Lenis();
+  lenis.on('scroll', (e) => {
+    isVisible();
+  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
 
   // прокручивать к нужному слайду при клике на маленькие слайды
   $(document).on('click', '.project_images_small .item', function (e) {
@@ -316,7 +315,7 @@ $(document).ready(function () {
     e.preventDefault();
     $('.modal_callback').addClass('show');
   });
-  $(document).on('click', '.modal_callback .close', function (e) {
+  $(document).on('click', '.modal_close', function (e) {
     e.preventDefault();
     $('.modal_callback').removeClass('show');
   });
@@ -326,6 +325,30 @@ $(document).ready(function () {
   phoneInputs.forEach((input) => {
     IMask(input, {
       mask: '+{7} (000) 000-00-00',
+    });
+  });
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  let panels = gsap.utils.toArray('.section');
+
+  panels.forEach((panel, i) => {
+    // Создание ScrollTrigger для каждой секции
+    ScrollTrigger.create({
+      trigger: panel,
+      start: () =>
+        panel.offsetHeight < window.innerHeight ? 'top top' : 'bottom bottom',
+
+      onEnter: () =>
+        gsap.to(panel, { backgroundColor: '#F7F7F7', duration: 1 }), // Смена цвета при скролле вниз
+      // onLeave: () => gsap.to(panel, { backgroundColor: '#fff', duration: 1 }), // Возврат цвета при скролле вверх
+      onEnterBack: () =>
+        gsap.to(panel, { backgroundColor: '#F7F7F7', duration: 1 }), // Смена цвета при обратном скролле
+      onLeaveBack: () =>
+        gsap.to(panel, { backgroundColor: '#fff', duration: 1 }), // Возврат цвета при обратном скролле
+
+      pin: true, // Закрепление секции на экране
+      pinSpacing: false, // Отключение отступов
     });
   });
 });

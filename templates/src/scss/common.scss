@@ -69,6 +69,7 @@ $transition: all 0.3s ease;
 
 html {
 	scroll-behavior: auto;
+	overflow-x: hidden;
 }
 
 html,
@@ -232,6 +233,11 @@ ul {
 
 	&:hover {}
 
+}
+
+.btn_grey {
+	background: #F1F1F1;
+	color: $color_black
 }
 
 // swiper
@@ -2205,11 +2211,11 @@ ul {
 	height: 100%;
 	background: #fff;
 	z-index: 1000;
-	// flex-direction: column;
+	flex-direction: column;
 	overflow: auto;
 
 	&.show {
-		display: block;
+		display: flex;
 	}
 
 	.close {
@@ -2240,12 +2246,12 @@ ul {
 	.logo {
 		margin-left: auto;
 		margin-right: auto;
+		flex: 0 0 auto;
 	}
 
 	.body {
 		padding: 96px 20px;
-		// height: 100%;
-		// overflow: auto;
+		height: 100%;
 	}
 
 	.title {
@@ -2262,14 +2268,16 @@ ul {
 		margin-left: auto;
 		margin-right: auto;
 		width: 100%;
+
+		.btn {
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 24px;
+			min-width: 200px;
+		}
 	}
 
-	.btn {
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 24px;
-		min-width: 200px;
-	}
+
 }
 
 .form-row {
@@ -2445,6 +2453,22 @@ textarea.form-control {
 	}
 }
 
+.after_form {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+
+	&[style*="display: block"] {
+		display: flex !important;
+	}
+
+	&.show {
+		display: flex;
+	}
+}
+
 @media screen and (max-width:1200px) {
 	.modal_callback .title {
 		font-size: 30px;
@@ -2495,4 +2519,8 @@ textarea.form-control {
 			margin: 0;
 		}
 	}
+}
+
+.section {
+	background: #fff;
 }
