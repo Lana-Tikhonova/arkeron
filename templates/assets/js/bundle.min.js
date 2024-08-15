@@ -46,101 +46,101 @@ $(document).ready(function () {
     $(this).find('.text').addClass('hide').removeClass('show');
   });
 
-  // //  бегущая строка информации в большом слайдерe
-  // let sliderMarqueeOptions = {
-  //   duration: 30000,
-  //   duplicated: true,
-  //   pauseOnHover: true,
-  //   startVisible: true,
-  //   gap: 12,
-  // };
+  //  бегущая строка информации в большом слайдерe
+  let sliderMarqueeOptions = {
+    duration: 30000,
+    duplicated: true,
+    pauseOnHover: true,
+    startVisible: true,
+    gap: 12,
+  };
 
-  // let sliderMarquee = $('.head_slider .info_line').marquee(
-  //   sliderMarqueeOptions
-  // );
-  // sliderMarquee.marquee('pause');
+  let sliderMarquee = $('.head_slider .info_line').marquee(
+    sliderMarqueeOptions
+  );
+  sliderMarquee.marquee('pause');
 
-  // function sliderMarqueeFunc(slider) {
-  //   let activeSlide = slider.slides[slider.activeIndex];
-  //   let lineSlider = activeSlide.querySelector('.head_slider .info_line');
+  function sliderMarqueeFunc(slider) {
+    let activeSlide = slider.slides[slider.activeIndex];
+    let lineSlider = activeSlide.querySelector('.head_slider .info_line');
 
-  //   // останавливать бегущую строку если не активный слайд
-  //   Object.values(sliderMarquee).forEach((item) => $(item).marquee('pause'));
+    // останавливать бегущую строку если не активный слайд
+    Object.values(sliderMarquee).forEach((item) => $(item).marquee('pause'));
 
-  //   // Запускать бегущую строку при перелистывании слайдера
-  //   if (lineSlider) {
-  //     $(lineSlider).marquee('resume');
-  //   }
-  // }
+    // Запускать бегущую строку при перелистывании слайдера
+    if (lineSlider) {
+      $(lineSlider).marquee('resume');
+    }
+  }
 
-  // if ($(window).width() > 993) {
-  //   //  бегущая строка заголовка в большом слайдерe
-  //   let titleMarqueeOptions = {
-  //     duration: 20000,
-  //     duplicated: false,
-  //     pauseOnHover: true,
-  //     startVisible: true,
-  //     gap: 0,
-  //   };
+  if ($(window).width() > 993) {
+    //  бегущая строка заголовка в большом слайдерe
+    let titleMarqueeOptions = {
+      duration: 20000,
+      duplicated: false,
+      pauseOnHover: true,
+      startVisible: true,
+      gap: 0,
+    };
 
-  //   let titleMarquee = $('.head_slider_wrapper .title').marquee(
-  //     titleMarqueeOptions
-  //   );
-  //   titleMarquee.marquee('pause');
+    let titleMarquee = $('.head_slider_wrapper .title').marquee(
+      titleMarqueeOptions
+    );
+    titleMarquee.marquee('pause');
 
-  //   function sliderTitleMarqueeFunc(slider) {
-  //     let activeSlide = slider.slides[slider.activeIndex];
-  //     let titleSlider = activeSlide.querySelector(
-  //       '.head_slider_wrapper .title'
-  //     );
+    function sliderTitleMarqueeFunc(slider) {
+      let activeSlide = slider.slides[slider.activeIndex];
+      let titleSlider = activeSlide.querySelector(
+        '.head_slider_wrapper .title'
+      );
 
-  //     // останавливать бегущую строку если не активный слайд
-  //     Object.values(titleMarquee).forEach((item) => $(item).marquee('pause'));
+      // останавливать бегущую строку если не активный слайд
+      Object.values(titleMarquee).forEach((item) => $(item).marquee('pause'));
 
-  //     // если заголовок не входит по ширине, то запускать бегущюю строку
-  //     if (
-  //       $(window).width() > 993 &&
-  //       titleSlider &&
-  //       $(titleSlider).find('.js-marquee').width() >=
-  //         $(titleSlider).parent().width()
-  //     ) {
-  //       $(titleSlider).marquee('resume');
-  //     }
-  //   }
-  // }
+      // если заголовок не входит по ширине, то запускать бегущюю строку
+      if (
+        $(window).width() > 993 &&
+        titleSlider &&
+        $(titleSlider).find('.js-marquee').width() >=
+          $(titleSlider).parent().width()
+      ) {
+        $(titleSlider).marquee('resume');
+      }
+    }
+  }
 
-  // // большой слайдер
-  // const headSlider = new Swiper('.head_slider', {
-  //   slidesPerView: 1,
-  //   spaceBetween: 20,
-  //   speed: 600,
-  //   // effect: 'fade',
-  //   loop: true,
-  //   watchOverflow: true,
-  //   watchSlidesVisibility: true,
-  //   watchSlidesProgress: true,
-  //   pagination: {
-  //     el: '.swiper-pagination',
-  //   },
-  //   navigation: {
-  //     nextEl: '.swiper-button-next',
-  //     prevEl: '.swiper-button-prev',
-  //   },
-  //   on: {
-  //     init: function (slider) {
-  //       sliderMarqueeFunc(slider);
-  //       if ($(window).width() > 993) {
-  //         sliderTitleMarqueeFunc(slider);
-  //       }
-  //     },
-  //     slideChangeTransitionEnd: function (slider) {
-  //       sliderMarqueeFunc(slider);
-  //       if ($(window).width() > 993) {
-  //         sliderTitleMarqueeFunc(slider);
-  //       }
-  //     },
-  //   },
-  // });
+  // большой слайдер
+  const headSlider = new Swiper('.head_slider', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    speed: 600,
+    // effect: 'fade',
+    loop: true,
+    watchOverflow: true,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    on: {
+      init: function (slider) {
+        sliderMarqueeFunc(slider);
+        if ($(window).width() > 993) {
+          sliderTitleMarqueeFunc(slider);
+        }
+      },
+      slideChangeTransitionEnd: function (slider) {
+        sliderMarqueeFunc(slider);
+        if ($(window).width() > 993) {
+          sliderTitleMarqueeFunc(slider);
+        }
+      },
+    },
+  });
 
   // слайдер команды
   const teamSlider = new Swiper('.team_slider', {
