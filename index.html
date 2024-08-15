@@ -23,7 +23,7 @@
     <link rel="preload" href="templates/assets/fonts/PTSans-Regular.woff2" as="font" type="font/woff2"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
-    <link rel="stylesheet" href="templates/assets/css/bundle.min.css?v=3">
+    <link rel="stylesheet" href="templates/assets/css/bundle.min.css?v=4">
 
     <script src="https://api-maps.yandex.ru/3.0/?apikey=4c7e2233-a854-4da5-9483-7a55bd41dfc3&lang=ru_RU"
         type="text/javascript"></script>
@@ -303,32 +303,34 @@
                             <div class='text'>Central Properties</div>
                         </div>
                     </div>
-                    <div class='project_images_small_block'>
-                        <div class="project_images_small">
-                            <div class='project_images_small_border'></div>
-                            <a href="#slide_1" class='item'>
-                                <img src="templates/assets/imgs/scroll_map_img_1.png" alt="">
-                            </a>
-                            <a href="#slide_2" class='item'>
-                                <img src="templates/assets/imgs/scroll_map_img_2.png" alt="">
-                            </a>
-                            <a href="#slide_3" class='item'>
-                                <img src="templates/assets/imgs/scroll_map_img_3.png" alt="">
-                            </a>
-                            <a href="#slide_4" class='item'>
-                                <img src="templates/assets/imgs/scroll_map_img_4.png" alt="">
-                            </a>
-                        </div>
-                        <div class='project_images_small_btn'>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M12 10.6287L7.61726 7.21606C7.24729 6.92798 6.64745 6.92798 6.27748 7.21606C5.90751 7.50414 5.90751 7.9712 6.27748 8.25928L11.1515 12.0544C11.6201 12.4193 12.3799 12.4193 12.8485 12.0544L17.7225 8.25928C18.0925 7.9712 18.0925 7.50414 17.7225 7.21606C17.3526 6.92798 16.7527 6.92798 16.3827 7.21606L12 10.6287Z"
-                                    fill="#B7B7B7" />
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M12 15.3006L7.61726 11.888C7.24729 11.5999 6.64745 11.5999 6.27748 11.888C5.90751 12.176 5.90751 12.6431 6.27748 12.9312L11.1515 16.7263C11.6201 17.0912 12.3799 17.0912 12.8485 16.7263L17.7225 12.9312C18.0925 12.6431 18.0925 12.176 17.7225 11.888C17.3526 11.5999 16.7527 11.5999 16.3827 11.888L12 15.3006Z"
-                                    fill="#B7B7B7" />
-                            </svg>
+                    <div class='project_images_small_block_wrapper'>
+                        <div class='project_images_small_block'>
+                            <div class="project_images_small">
+                                <div class='project_images_small_border'></div>
+                                <a href="#slide_1" class='item'>
+                                    <img src="templates/assets/imgs/scroll_map_img_1.png" alt="">
+                                </a>
+                                <a href="#slide_2" class='item'>
+                                    <img src="templates/assets/imgs/scroll_map_img_2.png" alt="">
+                                </a>
+                                <a href="#slide_3" class='item'>
+                                    <img src="templates/assets/imgs/scroll_map_img_3.png" alt="">
+                                </a>
+                                <a href="#slide_4" class='item'>
+                                    <img src="templates/assets/imgs/scroll_map_img_4.png" alt="">
+                                </a>
+                            </div>
+                            <div class='project_images_small_btn'>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12 10.6287L7.61726 7.21606C7.24729 6.92798 6.64745 6.92798 6.27748 7.21606C5.90751 7.50414 5.90751 7.9712 6.27748 8.25928L11.1515 12.0544C11.6201 12.4193 12.3799 12.4193 12.8485 12.0544L17.7225 8.25928C18.0925 7.9712 18.0925 7.50414 17.7225 7.21606C17.3526 6.92798 16.7527 6.92798 16.3827 7.21606L12 10.6287Z"
+                                        fill="#B7B7B7" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M12 15.3006L7.61726 11.888C7.24729 11.5999 6.64745 11.5999 6.27748 11.888C5.90751 12.176 5.90751 12.6431 6.27748 12.9312L11.1515 16.7263C11.6201 17.0912 12.3799 17.0912 12.8485 16.7263L17.7225 12.9312C18.0925 12.6431 18.0925 12.176 17.7225 11.888C17.3526 11.5999 16.7527 11.5999 16.3827 11.888L12 15.3006Z"
+                                        fill="#B7B7B7" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                     <div class='project_images_content'>
@@ -651,7 +653,7 @@
     <script src="templates/src/vendors/imask/imask.js"></script>
     <script src="templates/src/vendors/marquee/jquery.marquee.min.js"></script>
     <script src="templates/src/vendors/swiper/swiper-bundle.min.js"></script>
-    <script src="templates/assets/js/bundle.min.js?v=3"></script>
+    <script src="templates/assets/js/bundle.min.js?v=4"></script>
 </body>
 
 </html>

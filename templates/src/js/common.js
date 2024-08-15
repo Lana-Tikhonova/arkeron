@@ -46,101 +46,101 @@ $(document).ready(function () {
     $(this).find('.text').addClass('hide').removeClass('show');
   });
 
-  //  бегущая строка информации в большом слайдерe
-  let sliderMarqueeOptions = {
-    duration: 30000,
-    duplicated: true,
-    pauseOnHover: true,
-    startVisible: true,
-    gap: 12,
-  };
+  // //  бегущая строка информации в большом слайдерe
+  // let sliderMarqueeOptions = {
+  //   duration: 30000,
+  //   duplicated: true,
+  //   pauseOnHover: true,
+  //   startVisible: true,
+  //   gap: 12,
+  // };
 
-  let sliderMarquee = $('.head_slider .info_line').marquee(
-    sliderMarqueeOptions
-  );
-  sliderMarquee.marquee('pause');
+  // let sliderMarquee = $('.head_slider .info_line').marquee(
+  //   sliderMarqueeOptions
+  // );
+  // sliderMarquee.marquee('pause');
 
-  function sliderMarqueeFunc(slider) {
-    let activeSlide = slider.slides[slider.activeIndex];
-    let lineSlider = activeSlide.querySelector('.head_slider .info_line');
+  // function sliderMarqueeFunc(slider) {
+  //   let activeSlide = slider.slides[slider.activeIndex];
+  //   let lineSlider = activeSlide.querySelector('.head_slider .info_line');
 
-    // останавливать бегущую строку если не активный слайд
-    Object.values(sliderMarquee).forEach((item) => $(item).marquee('pause'));
+  //   // останавливать бегущую строку если не активный слайд
+  //   Object.values(sliderMarquee).forEach((item) => $(item).marquee('pause'));
 
-    // Запускать бегущую строку при перелистывании слайдера
-    if (lineSlider) {
-      $(lineSlider).marquee('resume');
-    }
-  }
+  //   // Запускать бегущую строку при перелистывании слайдера
+  //   if (lineSlider) {
+  //     $(lineSlider).marquee('resume');
+  //   }
+  // }
 
-  if ($(window).width() > 993) {
-    //  бегущая строка заголовка в большом слайдерe
-    let titleMarqueeOptions = {
-      duration: 20000,
-      duplicated: false,
-      pauseOnHover: true,
-      startVisible: true,
-      gap: 0,
-    };
+  // if ($(window).width() > 993) {
+  //   //  бегущая строка заголовка в большом слайдерe
+  //   let titleMarqueeOptions = {
+  //     duration: 20000,
+  //     duplicated: false,
+  //     pauseOnHover: true,
+  //     startVisible: true,
+  //     gap: 0,
+  //   };
 
-    let titleMarquee = $('.head_slider_wrapper .title').marquee(
-      titleMarqueeOptions
-    );
-    titleMarquee.marquee('pause');
+  //   let titleMarquee = $('.head_slider_wrapper .title').marquee(
+  //     titleMarqueeOptions
+  //   );
+  //   titleMarquee.marquee('pause');
 
-    function sliderTitleMarqueeFunc(slider) {
-      let activeSlide = slider.slides[slider.activeIndex];
-      let titleSlider = activeSlide.querySelector(
-        '.head_slider_wrapper .title'
-      );
+  //   function sliderTitleMarqueeFunc(slider) {
+  //     let activeSlide = slider.slides[slider.activeIndex];
+  //     let titleSlider = activeSlide.querySelector(
+  //       '.head_slider_wrapper .title'
+  //     );
 
-      // останавливать бегущую строку если не активный слайд
-      Object.values(titleMarquee).forEach((item) => $(item).marquee('pause'));
+  //     // останавливать бегущую строку если не активный слайд
+  //     Object.values(titleMarquee).forEach((item) => $(item).marquee('pause'));
 
-      // если заголовок не входит по ширине, то запускать бегущюю строку
-      if (
-        $(window).width() > 993 &&
-        titleSlider &&
-        $(titleSlider).find('.js-marquee').width() >=
-          $(titleSlider).parent().width()
-      ) {
-        $(titleSlider).marquee('resume');
-      }
-    }
-  }
+  //     // если заголовок не входит по ширине, то запускать бегущюю строку
+  //     if (
+  //       $(window).width() > 993 &&
+  //       titleSlider &&
+  //       $(titleSlider).find('.js-marquee').width() >=
+  //         $(titleSlider).parent().width()
+  //     ) {
+  //       $(titleSlider).marquee('resume');
+  //     }
+  //   }
+  // }
 
-  // большой слайдер
-  const headSlider = new Swiper('.head_slider', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    speed: 600,
-    // effect: 'fade',
-    loop: true,
-    watchOverflow: true,
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true,
-    pagination: {
-      el: '.swiper-pagination',
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    on: {
-      init: function (slider) {
-        sliderMarqueeFunc(slider);
-        if ($(window).width() > 993) {
-          sliderTitleMarqueeFunc(slider);
-        }
-      },
-      slideChangeTransitionEnd: function (slider) {
-        sliderMarqueeFunc(slider);
-        if ($(window).width() > 993) {
-          sliderTitleMarqueeFunc(slider);
-        }
-      },
-    },
-  });
+  // // большой слайдер
+  // const headSlider = new Swiper('.head_slider', {
+  //   slidesPerView: 1,
+  //   spaceBetween: 20,
+  //   speed: 600,
+  //   // effect: 'fade',
+  //   loop: true,
+  //   watchOverflow: true,
+  //   watchSlidesVisibility: true,
+  //   watchSlidesProgress: true,
+  //   pagination: {
+  //     el: '.swiper-pagination',
+  //   },
+  //   navigation: {
+  //     nextEl: '.swiper-button-next',
+  //     prevEl: '.swiper-button-prev',
+  //   },
+  //   on: {
+  //     init: function (slider) {
+  //       sliderMarqueeFunc(slider);
+  //       if ($(window).width() > 993) {
+  //         sliderTitleMarqueeFunc(slider);
+  //       }
+  //     },
+  //     slideChangeTransitionEnd: function (slider) {
+  //       sliderMarqueeFunc(slider);
+  //       if ($(window).width() > 993) {
+  //         sliderTitleMarqueeFunc(slider);
+  //       }
+  //     },
+  //   },
+  // });
 
   // слайдер команды
   const teamSlider = new Swiper('.team_slider', {
@@ -227,6 +227,65 @@ $(document).ready(function () {
     }
   });
 
+  // прокручивать к нужному слайду при клике на маленькие слайды
+  $(document).on('click', '.project_images_small .item', function (e) {
+    e.preventDefault();
+    let href = $(this).attr('href');
+    $('html, body').animate(
+      {
+        scrollTop:
+          $(href).offset().top +
+          $(href).outerHeight() -
+          $(window).height() +
+          50,
+      },
+      1500,
+      'linear'
+    );
+    return false;
+  });
+
+  // прокрутка к низу слайдера
+  $(document).on('click', '.project_images_small_btn', function (e) {
+    $('html, body').animate(
+      {
+        scrollTop:
+          $('.project_images').offset().top +
+          $('.project_images').outerHeight() -
+          $(window).height(),
+      },
+      500,
+      'linear'
+    );
+    return false;
+  });
+
+  // затемнять маленькие слайды, при ховере на один из них
+  $('.project_images_small .item').on('mouseenter', function (e) {
+    $('.project_images_small .item').not(this).css('opacity', '0.4');
+  });
+
+  $('.project_images_small .item').on('mouseleave', function (e) {
+    $('.project_images_small .item').not(this).css('opacity', '1');
+  });
+
+  $(document).on('click', '.modal_callback_btn', function (e) {
+    e.preventDefault();
+    $('.modal_callback').addClass('show');
+  });
+  $(document).on('click', '.modal_close', function (e) {
+    e.preventDefault();
+    $('.modal_callback').removeClass('show');
+  });
+
+  // Маска для инпутов с номером телефона
+  const phoneInputs = document.querySelectorAll('.form-control[type="tel"]');
+  phoneInputs.forEach((input) => {
+    IMask(input, {
+      mask: '+{7} (000) 000-00-00',
+    });
+  });
+
   // скролл в слайдере
   // const slider = $('.project_images');
   // let sliderSmall = $('.project_images_small_block');
@@ -273,119 +332,89 @@ $(document).ready(function () {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
-
   requestAnimationFrame(raf);
+  const project_images = document.querySelectorAll('.project_images img');
 
-  // прокручивать к нужному слайду при клике на маленькие слайды
-  $(document).on('click', '.project_images_small .item', function (e) {
-    e.preventDefault();
-    let href = $(this).attr('href');
-    $('html, body').animate(
-      {
-        scrollTop: $(href).offset().top,
-      },
-      1500,
-      'linear'
-    );
-    return false;
-  });
-
-  // прокрутка к низу слайдера
-  $(document).on('click', '.project_images_small_btn', function (e) {
-    $('html, body').animate(
-      {
-        scrollTop:
-          $('.project_images_wrapper').offset().top +
-          $('.project_images_wrapper').outerHeight() -
-          $(window).height(),
-      },
-      500,
-      'linear'
-    );
-    return false;
-  });
-
-  // затемнять маленькие слайды, при ховере на один из них
-  $('.project_images_small .item').on('mouseenter', function (e) {
-    $('.project_images_small .item').not(this).css('opacity', '0.4');
-  });
-
-  $('.project_images_small .item').on('mouseleave', function (e) {
-    $('.project_images_small .item').not(this).css('opacity', '1');
-  });
-
-  $(document).on('click', '.modal_callback_btn', function (e) {
-    e.preventDefault();
-    $('.modal_callback').addClass('show');
-  });
-  $(document).on('click', '.modal_close', function (e) {
-    e.preventDefault();
-    $('.modal_callback').removeClass('show');
-  });
-
-  // Маска для инпутов с номером телефона
-  const phoneInputs = document.querySelectorAll('.form-control[type="tel"]');
-  phoneInputs.forEach((input) => {
-    IMask(input, {
-      mask: '+{7} (000) 000-00-00',
+  const imgPromises = Array.from(project_images).map((img) => {
+    return new Promise((resolve, reject) => {
+      // Проверяем, загружено ли изображение уже
+      if (img.complete && img.naturalHeight !== 0) {
+        resolve(img);
+      } else {
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error('Ошибка загрузки изображения'));
+      }
     });
   });
+  // Используем Promise.all для ожидания загрузки всех изображений
+  Promise.all(imgPromises)
+    .then(() => {
+      console.log('Все изображения загружены');
+      gsap.registerPlugin(ScrollTrigger);
 
-  gsap.registerPlugin(ScrollTrigger);
+      let panels = gsap.utils.toArray('.section');
 
-  let panels = gsap.utils.toArray('.section');
+      panels.forEach((panel, i) => {
+        // Создание ScrollTrigger для каждой секции
+        ScrollTrigger.create({
+          trigger: panel,
+          start: () =>
+            panel.offsetHeight < window.innerHeight
+              ? 'top top'
+              : 'bottom bottom',
 
-  panels.forEach((panel, i) => {
-    // Создание ScrollTrigger для каждой секции
-    ScrollTrigger.create({
-      trigger: panel,
-      start: () =>
-        panel.offsetHeight < window.innerHeight ? 'top top' : 'bottom bottom',
+          onEnter: () =>
+            gsap.to(panel, { backgroundColor: '#F7F7F7', duration: 1 }), // Смена цвета при скролле вниз
+          // onLeave: () => gsap.to(panel, { backgroundColor: '#fff', duration: 1 }), // Возврат цвета при скролле вверх
+          onEnterBack: () =>
+            gsap.to(panel, { backgroundColor: '#F7F7F7', duration: 1 }), // Смена цвета при обратном скролле
+          onLeaveBack: () =>
+            gsap.to(panel, { backgroundColor: '#fff', duration: 1 }), // Возврат цвета при обратном скролле
 
-      onEnter: () =>
-        gsap.to(panel, { backgroundColor: '#F7F7F7', duration: 1 }), // Смена цвета при скролле вниз
-      // onLeave: () => gsap.to(panel, { backgroundColor: '#fff', duration: 1 }), // Возврат цвета при скролле вверх
-      onEnterBack: () =>
-        gsap.to(panel, { backgroundColor: '#F7F7F7', duration: 1 }), // Смена цвета при обратном скролле
-      onLeaveBack: () =>
-        gsap.to(panel, { backgroundColor: '#fff', duration: 1 }), // Возврат цвета при обратном скролле
+          pin: true, // Закрепление секции на экране
+          pinSpacing: false, // Отключение отступов
+        });
+      });
 
-      pin: true, // Закрепление секции на экране
-      pinSpacing: false, // Отключение отступов
+      // скролл в слайдере
+      const slider = document.querySelector('.project_images');
+      const sliderWrapper = document.querySelector('.project_images_wrapper');
+      let sliderImages = document.querySelector('.project_images_small');
+      let sliderImagesWrapper = document.querySelector(
+        '.project_images_small_block_wrapper'
+      );
+      let sliderImagesBlock = document.querySelector(
+        '.project_images_small_block'
+      );
+      let sliderBorder = document.querySelector('.project_images_small_border');
+
+      const maxBorderTranslate =
+        sliderImages.offsetHeight - sliderBorder.offsetHeight;
+
+      const maxSmallSliderTranslate =
+        slider.offsetHeight -
+        // sliderImagesWrapper.offsetHeight -
+        sliderImagesBlock.offsetHeight;
+      const scrollTriggerSettings = {
+        trigger: sliderWrapper,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+      };
+
+      gsap.to('.project_images_small_border', {
+        y: maxBorderTranslate,
+        ease: 'none',
+        scrollTrigger: scrollTriggerSettings,
+      });
+
+      gsap.to('.project_images_small_block', {
+        y: maxSmallSliderTranslate,
+        ease: 'none',
+        scrollTrigger: scrollTriggerSettings,
+      });
+    })
+    .catch((error) => {
+      console.error('Ошибка при загрузке одного из изображений:', error);
     });
-  });
-
-  // скролл в слайдере
-  const slider = document.querySelector('.project_images');
-  const sliderWrapper = document.querySelector('.project_images_wrapper');
-  let sliderImages = document.querySelector('.project_images_small');
-  let sliderImagesWrapper = document.querySelector(
-    '.project_images_small_block'
-  );
-  let sliderBorder = document.querySelector('.project_images_small_border');
-
-  const maxBorderTranslate =
-    sliderImages.offsetHeight - sliderBorder.offsetHeight;
-
-  const maxSmallSliderTranslate =
-    slider.offsetHeight - sliderImagesWrapper.offsetHeight;
-
-  const scrollTriggerSettings = {
-    trigger: sliderWrapper,
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: true,
-  };
-
-  gsap.to('.project_images_small_border', {
-    y: maxBorderTranslate,
-    ease: 'none',
-    scrollTrigger: scrollTriggerSettings,
-  });
-
-  gsap.to('.project_images_small_block', {
-    y: maxSmallSliderTranslate,
-    ease: 'none',
-    scrollTrigger: scrollTriggerSettings,
-  });
 });
