@@ -1985,7 +1985,7 @@ ul {
 
 	.container {
 		display: flex;
-		align-items: flex-start;
+		// align-items: flex-start;
 		gap: 16px;
 		position: relative;
 	}
@@ -2001,8 +2001,8 @@ ul {
 }
 
 .project_images_small_block {
-	position: sticky;
-	top: 1px;
+	// position: sticky;
+	// top: 1px;
 	height: fit-content;
 	transition: top 0.1s ease;
 }
@@ -2523,4 +2523,5 @@ textarea.form-control {
 
 .section {
 	background: #fff;
+	// min-height: 100dvh;
 }

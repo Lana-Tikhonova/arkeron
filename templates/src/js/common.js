@@ -228,45 +228,46 @@ $(document).ready(function () {
   });
 
   // скролл в слайдере
-  const slider = $('.project_images');
-  let sliderSmall = $('.project_images_small_block');
-  let sliderBorder = $('.project_images_small_border');
-  let project_images_small = $('.project_images_small');
-  let sliderHeight = slider.outerHeight();
-  let sliderSmallHeight = sliderSmall.outerHeight();
-  const maxBorderTranslate =
-    project_images_small.outerHeight() - sliderBorder.outerHeight();
+  // const slider = $('.project_images');
+  // let sliderSmall = $('.project_images_small_block');
+  // let sliderBorder = $('.project_images_small_border');
+  // let project_images_small = $('.project_images_small');
+  // let sliderHeight = slider.outerHeight();
+  // let sliderSmallHeight = sliderSmall.outerHeight();
+  // const maxBorderTranslate =
+  //   project_images_small.outerHeight() - sliderBorder.outerHeight();
 
-  function isVisible() {
-    let sliderTopPosition = slider[0].getBoundingClientRect().top;
+  // function isVisible() {
+  //   let sliderTopPosition = slider[0].getBoundingClientRect().top;
 
-    const topBorderPreccent =
-      (sliderSmallHeight / 100) *
-      (Math.abs(sliderTopPosition) / (sliderHeight / 100));
+  //   const topBorderPreccent =
+  //     (sliderSmallHeight / 100) *
+  //     (Math.abs(sliderTopPosition) / (sliderHeight / 100));
 
-    if (sliderTopPosition < 0) {
-      if (project_images_small[0].getBoundingClientRect().top > 0) {
-        sliderSmall.css({
-          top: `${topBorderPreccent}px`,
-        });
+  //   if (sliderTopPosition < 0) {
+  //     if (project_images_small[0].getBoundingClientRect().top > 0) {
+  //       sliderSmall.css({
+  //         top: `${topBorderPreccent}px`,
+  //       });
 
-        sliderBorder.css({
-          top:
-            topBorderPreccent <= maxBorderTranslate
-              ? topBorderPreccent
-              : maxBorderTranslate,
-        });
-      }
-    }
-  }
-  isVisible();
-  $(window).on('scroll', function () {
-    isVisible();
-  });
+  //       sliderBorder.css({
+  //         top:
+  //           topBorderPreccent <= maxBorderTranslate
+  //             ? topBorderPreccent
+  //             : maxBorderTranslate,
+  //       });
+  //     }
+  //   }
+  // }
+  // isVisible();
+  // $(window).on('scroll', function () {
+  //   isVisible();
+  // });
 
+  // плавный скролл
   const lenis = new Lenis();
   lenis.on('scroll', (e) => {
-    isVisible();
+    // isVisible();
   });
   function raf(time) {
     lenis.raf(time);
@@ -294,7 +295,9 @@ $(document).ready(function () {
     $('html, body').animate(
       {
         scrollTop:
-          slider.offset().top + slider.outerHeight() - $(window).height(),
+          $('.project_images_wrapper').offset().top +
+          $('.project_images_wrapper').outerHeight() -
+          $(window).height(),
       },
       500,
       'linear'
@@ -350,5 +353,39 @@ $(document).ready(function () {
       pin: true, // Закрепление секции на экране
       pinSpacing: false, // Отключение отступов
     });
+  });
+
+  // скролл в слайдере
+  const slider = document.querySelector('.project_images');
+  const sliderWrapper = document.querySelector('.project_images_wrapper');
+  let sliderImages = document.querySelector('.project_images_small');
+  let sliderImagesWrapper = document.querySelector(
+    '.project_images_small_block'
+  );
+  let sliderBorder = document.querySelector('.project_images_small_border');
+
+  const maxBorderTranslate =
+    sliderImages.offsetHeight - sliderBorder.offsetHeight;
+
+  const maxSmallSliderTranslate =
+    slider.offsetHeight - sliderImagesWrapper.offsetHeight;
+
+  const scrollTriggerSettings = {
+    trigger: sliderWrapper,
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: true,
+  };
+
+  gsap.to('.project_images_small_border', {
+    y: maxBorderTranslate,
+    ease: 'none',
+    scrollTrigger: scrollTriggerSettings,
+  });
+
+  gsap.to('.project_images_small_block', {
+    y: maxSmallSliderTranslate,
+    ease: 'none',
+    scrollTrigger: scrollTriggerSettings,
   });
 });
