@@ -109,7 +109,9 @@
                                         </div>
                                     </div>
                                     <div class="bottom">
-                                        <div class="img"><img src="templates/assets/imgs/header_img.png" alt=""></div>
+                                        <div class="img"><img data-src="templates/assets/imgs/header_img.png"
+                                                class='lazyload' alt="">
+                                        </div>
                                         <div class="info_line">
                                             <div class='info_line_item'>
                                                 <img src="templates/assets/imgs/SelectionInverse.svg" alt="">
@@ -148,7 +150,8 @@
                                         </div>
                                     </div>
                                     <div class="bottom">
-                                        <div class="img"><img src="templates/assets/imgs/header_img.png" alt=""></div>
+                                        <div class="img"><img data-src="templates/assets/imgs/header_img.png"
+                                                class='lazyload' alt=""></div>
                                         <div class="info_line">
                                             <div class='info_line_item'>
                                                 <img src="templates/assets/imgs/SelectionInverse.svg" alt="">
@@ -222,7 +225,8 @@
                                     с гарантией прохождения экспертизы и получения разрешения на строительство.</div>
                             </div>
                             <div class='img_wrapper'>
-                                <div class='img'><img src="templates/assets/imgs/services_img_1.png" alt=""></div>
+                                <div class='img'><img data-src="templates/assets/imgs/services_img_1.png"
+                                        class='lazyload' alt=""></div>
                             </div>
                         </div>
                     </li>
@@ -237,7 +241,8 @@
                                     в сроки.</div>
                             </div>
                             <div class='img_wrapper'>
-                                <div class='img'><img src="templates/assets/imgs/services_img_2.png" alt=""></div>
+                                <div class='img'><img data-src="templates/assets/imgs/services_img_2.png"
+                                        class='lazyload' alt=""></div>
                             </div>
                         </div>
                     </li>
@@ -252,7 +257,8 @@
                                     других коммуникаций.</div>
                             </div>
                             <div class='img_wrapper'>
-                                <div class='img'><img src="templates/assets/imgs/services_img_3.png" alt=""></div>
+                                <div class='img'><img data-src="templates/assets/imgs/services_img_3.png"
+                                        class='lazyload' alt=""></div>
                             </div>
                         </div>
                     </li>
@@ -266,7 +272,8 @@
                                     в эксплуатацию.</div>
                             </div>
                             <div class='img_wrapper'>
-                                <div class='img'><img src="templates/assets/imgs/services_img_4.png" alt=""></div>
+                                <div class='img'><img data-src="templates/assets/imgs/services_img_4.png"
+                                        class='lazyload' alt=""></div>
                             </div>
                         </div>
                     </li>
@@ -286,20 +293,20 @@
             <div class='project_images_wrapper'>
                 <div class="container">
                     <div class="project_images">
-                        <div class='item' id="slide_1">
-                            <img src="templates/assets/imgs/scroll_map_img_1.png" alt="">
+                        <div class='item' id="slide_1" data-content-img="1">
+                            <img data-src="templates/assets/imgs/scroll_map_img_1.png" class='lazyload' alt="">
                             <div class='text'>Central Properties</div>
                         </div>
                         <div class='item' id="slide_2">
-                            <img src="templates/assets/imgs/scroll_map_img_2.png" alt="">
+                            <img data-src="templates/assets/imgs/scroll_map_img_2.png" class='lazyload' alt="">
                             <div class='text'>Central Properties</div>
                         </div>
                         <div class='item' id="slide_3">
-                            <img src="templates/assets/imgs/scroll_map_img_3.png" alt="">
+                            <img data-src="templates/assets/imgs/scroll_map_img_3.png" class='lazyload' alt="">
                             <div class='text'>Central Properties</div>
                         </div>
                         <div class='item' id="slide_4">
-                            <img src="templates/assets/imgs/scroll_map_img_4.png" alt="">
+                            <img data-src="templates/assets/imgs/scroll_map_img_4.png" class='lazyload' alt="">
                             <div class='text'>Central Properties</div>
                         </div>
                     </div>
@@ -308,16 +315,16 @@
                             <div class="project_images_small">
                                 <div class='project_images_small_border'></div>
                                 <a href="#slide_1" class='item'>
-                                    <img src="templates/assets/imgs/scroll_map_img_1.png" alt="">
+                                    <img data-src="templates/assets/imgs/scroll_map_img_1.png" class='lazyload' alt="">
                                 </a>
                                 <a href="#slide_2" class='item'>
-                                    <img src="templates/assets/imgs/scroll_map_img_2.png" alt="">
+                                    <img data-src="templates/assets/imgs/scroll_map_img_2.png" class='lazyload' alt="">
                                 </a>
                                 <a href="#slide_3" class='item'>
-                                    <img src="templates/assets/imgs/scroll_map_img_3.png" alt="">
+                                    <img data-src="templates/assets/imgs/scroll_map_img_3.png" class='lazyload' alt="">
                                 </a>
                                 <a href="#slide_4" class='item'>
-                                    <img src="templates/assets/imgs/scroll_map_img_4.png" alt="">
+                                    <img data-src="templates/assets/imgs/scroll_map_img_4.png" class='lazyload' alt="">
                                 </a>
                             </div>
                             <div class='project_images_small_btn'>
@@ -334,7 +341,7 @@
                         </div>
                     </div>
                     <div class='project_images_content'>
-                        <div class='item'>
+                        <div class='item' data-content="1">
                             <div class="project_images_title">Логистический комплекс Central Properties в Москве.
                                 Спроектировали
                                 и построили объект площадью порядка 149 тыс. кв. м</div>
@@ -348,9 +355,24 @@
                                 <li class='info_line_item'>Офисы</li>
                             </ul>
                         </div>
+                        <!-- <div class='item' data-content="2">
+                            <div class="project_images_title">Куб-хаус, первое здание из гибридной древесины в Москве.
+                                Уникальное офисное здание, расположенное на последнем оставшемся участке Новой Москвы.
+                            </div>
+                            <ul class='project_images_list info_line'>
+                                <li class='info_line_item'><img src="templates/assets/imgs/SelectionInverse.svg" alt="">
+                                    4 200 м2</li>
+                                <li class='info_line_item'>Проектирование</li>
+                                <li class='info_line_item'>Строительство</li>
+                                <li class='info_line_item'>Технический надзор</li>
+                                <li class='info_line_item'>Склады</li>
+                                <li class='info_line_item'>Офисы</li>
+                            </ul>
+                        </div> -->
                     </div>
                 </div>
             </div>
+            <!-- mobile -->
             <div class='project_list'>
                 <div class="container">
                     <div class='project_item'>
@@ -361,13 +383,16 @@
                             <div class="swiper project_item_slider">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="templates/assets/imgs/scroll_map_img_1.png" alt="">
+                                        <img data-src="templates/assets/imgs/scroll_map_img_1.png" class='lazyload'
+                                            alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="templates/assets/imgs/scroll_map_img_2.png" alt="">
+                                        <img data-src="templates/assets/imgs/scroll_map_img_2.png" class='lazyload'
+                                            alt="">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="templates/assets/imgs/scroll_map_img_3.png" alt="">
+                                        <img data-src="templates/assets/imgs/scroll_map_img_3.png" class='lazyload'
+                                            alt="">
                                     </div>
                                 </div>
                                 <div class="swiper-pagination"></div>
@@ -400,7 +425,8 @@
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
                                 <div class="item">
-                                    <div class="img"><img src="templates/assets/imgs/team_img_1.png" alt=""></div>
+                                    <div class="img"><img data-src="templates/assets/imgs/team_img_1.png"
+                                            class='lazyload' alt=""></div>
                                     <div class="title">Дмитрий Иванов</div>
                                     <div class="post">Генеральный директор</div>
                                     <div class='text'>
@@ -411,7 +437,8 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item">
-                                    <div class="img"><img src="templates/assets/imgs/team_img_2.png" alt=""></div>
+                                    <div class="img"><img data-src="templates/assets/imgs/team_img_2.png"
+                                            class='lazyload' alt=""></div>
                                     <div class="title">Константин Константинопольский</div>
                                     <div class="post">Коммерческий директор</div>
                                     <div class='text'>
@@ -421,7 +448,8 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item">
-                                    <div class="img"><img src="templates/assets/imgs/team_img_3.png" alt=""></div>
+                                    <div class="img"><img data-src="templates/assets/imgs/team_img_3.png"
+                                            class='lazyload' alt=""></div>
                                     <div class="title">Анастасия Калинина</div>
                                     <div class="post">Главный архитектор</div>
                                     <div class='text'>
@@ -432,7 +460,8 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item">
-                                    <div class="img"><img src="templates/assets/imgs/team_img_4.png" alt=""></div>
+                                    <div class="img"><img data-src="templates/assets/imgs/team_img_4.png"
+                                            class='lazyload' alt=""></div>
                                     <div class="title">Алексей Дёмин</div>
                                     <div class="post">Конструктор</div>
                                     <div class='text'>
@@ -443,7 +472,8 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="item">
-                                    <div class="img"><img src="templates/assets/imgs/team_img_1.png" alt=""></div>
+                                    <div class="img"><img data-src="templates/assets/imgs/team_img_1.png"
+                                            class='lazyload' alt=""></div>
                                     <div class="title">Дмитрий Иванов</div>
                                     <div class="post">Генеральный директор</div>
                                     <div class='text'>
@@ -538,7 +568,8 @@
                         </div>
                         <div class="col">
                             <div class="user_block">
-                                <div class="img"><img src="templates/assets/imgs/team_img_2.png" alt=""></div>
+                                <div class="img"><img data-src="templates/assets/imgs/team_img_2.png" class='lazyload'
+                                        alt=""></div>
                                 <div>
                                     <h3>Персонально ваш</h3>
                                     <div class="title">Александр Виноградов</div>
@@ -646,6 +677,7 @@
             </div>
         </div>
     </main>
+    <script src="templates/src/vendors/lazysizes.min.js"></script>
     <script src="templates/src/vendors/jquery/jquery-3.5.1.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

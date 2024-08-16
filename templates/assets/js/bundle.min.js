@@ -333,6 +333,8 @@ $(document).ready(function () {
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
+
+  // подгружать библиотеку когда все фото загружены, чтобы не было глюков
   const project_images = document.querySelectorAll('.project_images img');
 
   const imgPromises = Array.from(project_images).map((img) => {
@@ -350,6 +352,7 @@ $(document).ready(function () {
   Promise.all(imgPromises)
     .then(() => {
       console.log('Все изображения загружены');
+
       gsap.registerPlugin(ScrollTrigger);
 
       let panels = gsap.utils.toArray('.section');
@@ -413,6 +416,19 @@ $(document).ready(function () {
         ease: 'none',
         scrollTrigger: scrollTriggerSettings,
       });
+
+      // let contentProject = gsap.utils.toArray('.project_images_content .item');
+      // let imageProject = gsap.utils.toArray('.project_images .item');
+      // console.log(imageProject);
+
+      // contentProject.forEach((content, i) => {
+      //   ScrollTrigger.create({
+      //     trigger: imageProject,
+      //     start: 'top top',
+      //     end: 'bottom bottom',
+      //     scrub: true,
+      //   });
+      // });
     })
     .catch((error) => {
       console.error('Ошибка при загрузке одного из изображений:', error);
