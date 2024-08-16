@@ -48,7 +48,7 @@ $(document).ready(function () {
 
   //  бегущая строка информации в большом слайдерe
   let sliderMarqueeOptions = {
-    duration: 30000,
+    duration: 50000,
     duplicated: true,
     pauseOnHover: true,
     startVisible: true,
@@ -76,7 +76,7 @@ $(document).ready(function () {
   if ($(window).width() > 993) {
     //  бегущая строка заголовка в большом слайдерe
     let titleMarqueeOptions = {
-      duration: 20000,
+      duration: 50000,
       duplicated: false,
       pauseOnHover: true,
       startVisible: true,
@@ -201,7 +201,7 @@ $(document).ready(function () {
 
   //  бегущая строка с в большом в cta
   $('.text_line').marquee({
-    duration: 15000,
+    duration: 20000,
     duplicated: true,
     pauseOnHover: true,
     startVisible: true,
@@ -233,11 +233,7 @@ $(document).ready(function () {
     let href = $(this).attr('href');
     $('html, body').animate(
       {
-        scrollTop:
-          $(href).offset().top +
-          $(href).outerHeight() -
-          $(window).height() +
-          50,
+        scrollTop: $(href).offset().top,
       },
       1500,
       'linear'
@@ -250,8 +246,8 @@ $(document).ready(function () {
     $('html, body').animate(
       {
         scrollTop:
-          $('.project_images').offset().top +
-          $('.project_images').outerHeight() -
+          $('.project_images_wrapper').offset().top +
+          $('.project_images_wrapper').outerHeight() -
           $(window).height(),
       },
       500,
@@ -355,10 +351,10 @@ $(document).ready(function () {
 
       gsap.registerPlugin(ScrollTrigger);
 
+      // Создание ScrollTrigger для каждой секции
       let panels = gsap.utils.toArray('.section');
 
       panels.forEach((panel, i) => {
-        // Создание ScrollTrigger для каждой секции
         ScrollTrigger.create({
           trigger: panel,
           start: () =>
@@ -380,12 +376,10 @@ $(document).ready(function () {
       });
 
       // скролл в слайдере
+
       const slider = document.querySelector('.project_images');
       const sliderWrapper = document.querySelector('.project_images_wrapper');
       let sliderImages = document.querySelector('.project_images_small');
-      let sliderImagesWrapper = document.querySelector(
-        '.project_images_small_block_wrapper'
-      );
       let sliderImagesBlock = document.querySelector(
         '.project_images_small_block'
       );
@@ -395,9 +389,16 @@ $(document).ready(function () {
         sliderImages.offsetHeight - sliderBorder.offsetHeight;
 
       const maxSmallSliderTranslate =
-        slider.offsetHeight -
-        // sliderImagesWrapper.offsetHeight -
-        sliderImagesBlock.offsetHeight;
+        slider.offsetHeight - sliderImagesBlock.offsetHeight;
+
+      // отсутп снизу, за слайдером, чтобы была возможность прокрутить к верху последней картинки
+      const viewportHeight = window.innerHeight;
+      const projectSection = document.querySelector('.project_images_block');
+      let sliderImg = slider.querySelectorAll('img');
+      let sliderImgLastHeight = sliderImg[sliderImg.length - 1].offsetHeight;
+      let viewportHeightWithoutImg = viewportHeight - sliderImgLastHeight;
+      projectSection.style.paddingBottom = `${viewportHeightWithoutImg}px`;
+
       const scrollTriggerSettings = {
         trigger: sliderWrapper,
         start: 'top top',
@@ -405,32 +406,128 @@ $(document).ready(function () {
         scrub: true,
       };
 
+      // перемешение рамки на маленьких картинках
       gsap.to('.project_images_small_border', {
         y: maxBorderTranslate,
         ease: 'none',
         scrollTrigger: scrollTriggerSettings,
       });
 
+      // перемешение маленьких картинок
       gsap.to('.project_images_small_block', {
         y: maxSmallSliderTranslate,
         ease: 'none',
         scrollTrigger: scrollTriggerSettings,
       });
 
-      // let contentProject = gsap.utils.toArray('.project_images_content .item');
-      // let imageProject = gsap.utils.toArray('.project_images .item');
-      // console.log(imageProject);
+      // менять текст справа в секции с галереей
+      const ST = ScrollTrigger.create({
+        trigger: sliderWrapper,
+        start: 'top top',
+        end: 'bottom bottom',
+        onUpdate: getCurrentSection,
+        // pin: '.project_images_content',
+      });
 
-      // contentProject.forEach((content, i) => {
-      //   ScrollTrigger.create({
-      //     trigger: imageProject,
-      //     start: 'top top',
-      //     end: 'bottom bottom',
-      //     scrub: true,
-      //   });
-      // });
+      const imgMarkers = gsap.utils.toArray('[data-marker-img]');
+      // Set up our content behaviors
+      imgMarkers.forEach((marker) => {
+        marker.content = document.querySelector(
+          `[data-marker-content="${marker.dataset.markerImg}"]`
+        );
+
+        // gsap.set(marker.content, { transformOrigin: 'center' });
+
+        marker.content.enter = function () {
+          gsap.fromTo(
+            marker.content,
+            { autoAlpha: 0 },
+            { duration: 0.3, autoAlpha: 1 }
+          );
+        };
+
+        marker.content.leave = function () {
+          gsap.to(marker.content, { duration: 0.1, autoAlpha: 0 });
+        };
+      });
+
+      // Handle the updated position
+      let lastContent;
+      function getCurrentSection() {
+        let newContent;
+        const currScroll = Math.abs(
+          document
+            .querySelector('.project_images_wrapper')
+            .getBoundingClientRect().top
+        );
+
+        // Find the current section
+        imgMarkers.forEach((marker) => {
+          console.log(currScroll, marker.offsetTop);
+
+          if (currScroll > marker.offsetTop) {
+            newContent = marker.content;
+          }
+        });
+
+        // If the current section is different than that last, animate in
+        if (
+          newContent &&
+          (lastContent == null || !newContent.isSameNode(lastContent))
+        ) {
+          // Fade out last section
+          if (lastContent) {
+            lastContent.leave();
+          }
+
+          // Animate in new section
+          newContent.enter();
+
+          lastContent = newContent;
+        }
+      }
     })
     .catch((error) => {
       console.error('Ошибка при загрузке одного из изображений:', error);
     });
+
+  // в блоке Наши услуги привязывать к курсору картинку
+  if ($(window).width() > 993) {
+    gsap.registerPlugin(Draggable);
+
+    let imagesBlock = gsap.utils.toArray('.services_list .img_content');
+    let isFollowing = false;
+
+    imagesBlock.forEach((block, i) => {
+      const imageWrapper = block.querySelector('.img_wrapper');
+      const image = block.querySelector('.img_block');
+
+      function followCursor(e) {
+        if (isFollowing) {
+          const rect = imageWrapper.getBoundingClientRect();
+          const x = e.clientX - rect.left + 50 - image.offsetWidth / 2;
+          const y = e.clientY - rect.top - 50 - image.offsetHeight / 2;
+
+          gsap.to(image, {
+            x: x,
+            y: y,
+            duration: 0.1,
+            ease: 'power2.out',
+          });
+        }
+      }
+
+      block.addEventListener('mouseenter', () => {
+        isFollowing = true;
+        gsap.to(image, { duration: 0.3 });
+        document.addEventListener('mousemove', followCursor);
+      });
+
+      block.addEventListener('mouseleave', () => {
+        isFollowing = false;
+        gsap.to(image, { x: 0, y: 0, duration: 0.3 });
+        document.removeEventListener('mousemove', followCursor);
+      });
+    });
+  }
 });
