@@ -2047,14 +2047,14 @@ ul {
 }
 
 .project_images_small_block_wrapper {
-	// position: -webkit-sticky;
-	// position: sticky;
-	// height: auto;
-	// top: 0;
-	// display: inline-flex;
-	// align-items: flex-start;
-	// flex-grow: 0;
-	// height: 100dvh;
+	position: -webkit-sticky;
+	position: sticky;
+	height: auto;
+	top: 0;
+	display: inline-flex;
+	align-items: flex-start;
+	flex-grow: 0;
+	height: 100dvh;
 }
 
 .project_images_small_block {

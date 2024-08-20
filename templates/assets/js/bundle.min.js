@@ -376,8 +376,6 @@ $(document).ready(function () {
       });
 
       // скролл в слайдере
-
-      const slider = document.querySelector('.project_images');
       const sliderWrapper = document.querySelector('.project_images_wrapper');
       let sliderImages = document.querySelector('.project_images_small');
       let sliderImagesBlock = document.querySelector(
@@ -389,9 +387,10 @@ $(document).ready(function () {
         sliderImages.offsetHeight - sliderBorder.offsetHeight;
 
       const maxSmallSliderTranslate =
-        slider.offsetHeight - sliderImagesBlock.offsetHeight;
+        window.innerHeight - sliderImagesBlock.offsetHeight;
 
       // отсутп снизу, за слайдером, чтобы была возможность прокрутить к верху последней картинки
+      const slider = document.querySelector('.project_images');
       const viewportHeight = window.innerHeight;
       const projectSection = document.querySelector('.project_images_block');
       let sliderImg = slider.querySelectorAll('img');
@@ -430,14 +429,11 @@ $(document).ready(function () {
       });
 
       const imgMarkers = gsap.utils.toArray('[data-marker-img]');
-      // Set up our content behaviors
+
       imgMarkers.forEach((marker) => {
         marker.content = document.querySelector(
           `[data-marker-content="${marker.dataset.markerImg}"]`
         );
-
-        // gsap.set(marker.content, { transformOrigin: 'center' });
-
         marker.content.enter = function () {
           gsap.fromTo(
             marker.content,
@@ -451,36 +447,30 @@ $(document).ready(function () {
         };
       });
 
-      // Handle the updated position
+      // Обработать обновленную позицию
       let lastContent;
       function getCurrentSection() {
         let newContent;
-        const currScroll = Math.abs(
-          document
-            .querySelector('.project_images_wrapper')
-            .getBoundingClientRect().top
-        );
+        const currScroll = Math.abs(sliderWrapper.getBoundingClientRect().top);
 
-        // Find the current section
+        // Найдите текущий раздел
         imgMarkers.forEach((marker) => {
-          console.log(currScroll, marker.offsetTop);
-
           if (currScroll > marker.offsetTop) {
             newContent = marker.content;
           }
         });
 
-        // If the current section is different than that last, animate in
+        // Если текущий раздел отличается от предыдущего, анимируйте в
         if (
           newContent &&
           (lastContent == null || !newContent.isSameNode(lastContent))
         ) {
-          // Fade out last section
+          // Затухание последнего раздела
           if (lastContent) {
             lastContent.leave();
           }
 
-          // Animate in new section
+          // Анимировать в новом разделе
           newContent.enter();
 
           lastContent = newContent;
